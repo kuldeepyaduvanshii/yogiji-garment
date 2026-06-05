@@ -1,15 +1,23 @@
 {{ define "main" }}
-<div class="container" style="padding:20px;">
-  <h1 style="color:#FFD700;">{{ .Title }}</h1>
-  {{ if .Params.image }}
-  <img src="{{ .Params.image }}" alt="{{ .Title }}" style="max-width:100%; border-radius:10px;">
-  {{ end }}
-  <h2>₹{{ .Params.price }}</h2>
-  <div>{{ .Content }}</div>
-  <a href="https://wa.me/91XXXXXXXXXX?text=I want to book: {{ .Title }} - ₹{{ .Params.price }}" 
-     target="_blank" 
-     style="display:inline-block; background:#25D366; color:white; padding:15px 30px; text-decoration:none; border-radius:5px; font-size:20px; margin-top:20px;">
-    📞 WhatsApp par Book Karein
-  </a>
-</div>
+<section class="hero-section" style="min-height:auto; padding-top:120px; padding-bottom:60px;">
+    <div class="container">
+        <div class="glass-card" style="max-width:700px; margin:0 auto; padding:30px; text-align:center;" data-aos="fade-up">
+            {{ if .Params.image }}
+            <img src="{{ .Params.image }}" alt="{{ .Title }}" style="max-width:100%; border-radius:20px; border:2px solid rgba(255,215,0,0.3);">
+            {{ end }}
+            <h1 style="color:#FFD700; margin:24px 0 8px; font-size:32px;">{{ .Title }}</h1>
+            <div style="font-size:28px; font-weight:700; color:#fff; margin-bottom:16px;">₹{{ .Params.price }}</div>
+            <div style="color:#cbd5e1; margin-bottom:28px; line-height:1.7;">{{ .Content }}</div>
+            <a href="https://wa.me/919575753707?text=I%20want%20to%20book%3A%20{{ .Title }}%20-%20%E2%82%B9{{ .Params.price }}" 
+               target="_blank" 
+               class="btn-primary" 
+               style="font-size:18px; padding:16px 36px;">
+                📞 Book Now on WhatsApp
+            </a>
+            <div style="margin-top:20px;">
+                <a href="{{ "/" | relURL }}" class="btn-outline" style="color:#FFD700; border-color:rgba(255,215,0,0.4);">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+</section>
 {{ end }}
