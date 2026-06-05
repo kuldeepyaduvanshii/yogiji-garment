@@ -1,17 +1,71 @@
-<!doctype html>
-<html lang="{{ $.Site.Language.Lang }}">
-  {{ partial "head" . }}
-  <body class="sans-serif">
-
-    {{ block "header" . }}{{ partial "nav" . }}{{end}}
-
-    {{ block "main" . }}{{ end }}
-
-    {{ block "footer" . }}{{ partial "footer" . }}{{end}}
-
-    {{ $script := .Site.Data.webpack.main }}
-    {{ with $script.js }}
-      <script src="{{ relURL . }}"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} | Yogi Ji Garment</title>
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}Yogi Ji Garment - Khandwa's premium clothing shop. Shop traditional and western wear online.{{ end }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
+    {{ if .IsHome }}
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     {{ end }}
-  </body>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ "/" | relURL }}" class="nav-logo">
+                <span class="logo-text">Yogi Ji Garment</span>
+                <span class="logo-dot"></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="{{ "/" | relURL }}" class="nav-link active">Home</a></li>
+                <li><a href="#products" class="nav-link">Products</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom-centered">
+                <p>&copy; {{ now.Format "2006" }} Yogi Ji Garment, Khandwa. All rights reserved.</p>
+                <p>Made with <i class="fas fa-heart heartbeat"></i> for our customers</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({duration:1000,once:true,offset:80});
+        // navbar scroll effect
+        const nb=document.querySelector('.navbar');
+        window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',window.pageYOffset>50));
+        // hamburger menu
+        const hb=document.querySelector('.hamburger'),nm=document.querySelector('.nav-menu');
+        if(hb&&nm)hb.addEventListener('click',()=>{hb.classList.toggle('active');nm.classList.toggle('active');document.body.style.overflow=nm.classList.contains('active')?'hidden':''});
+        document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{hb?.classList.remove('active');nm?.classList.remove('active');document.body.style.overflow=''}));
+        // smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const h=this.getAttribute('href');if(h==='#')return;const t=document.querySelector(h);if(t)window.scrollTo({top:t.offsetTop-80,behavior:'smooth'})}));
+        // scroll sections active link
+        const ss=document.querySelectorAll('section[id]'),nl=document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll',()=>{const sy=window.pageYOffset;ss.forEach(s=>{const sh=s.offsetHeight,st=s.offsetTop-100,sid=s.getAttribute('id');if(sy>st&&sy<=st+sh)nl.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')===`#${sid}`)l.classList.add('active')})})});
+        // back to top
+        const bt=document.getElementById('backToTop');
+        window.addEventListener('scroll',()=>bt?.classList.toggle('show',window.pageYOffset>400));
+        bt?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+        document.querySelectorAll('a[href="#"]').forEach(l=>l.addEventListener('click',e=>e.preventDefault()));
+    </script>
+</body>
 </html>
