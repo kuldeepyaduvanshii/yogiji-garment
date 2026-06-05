@@ -1,13 +1,94 @@
 {{ define "main" }}
-<h1 style="color:#FFD700;">Welcome to Yogi Ji Garment</h1>
-<div class="product-grid" style="display:flex; flex-wrap:wrap; gap:20px;">
-  {{ range where .Site.RegularPages "Section" "all-products" }}
-    <div style="background:#1a1a1a; padding:15px; border-radius:10px; width:280px;">
-      <img src="{{ .Params.image }}" alt="{{ .Title }}" style="width:100%; border-radius:5px;">
-      <h3 style="color:#FFD700;">{{ .Title }}</h3>
-      <p>₹{{ .Params.price }}</p>
-      <a href="{{ .Permalink }}" style="background:#FFD700; color:black; padding:10px; text-decoration:none;">View & Book</a>
+<!-- Hero Section -->
+<section id="home" class="hero-section" style="min-height:70vh;">
+    <div class="hero-background">
+        <div class="gradient-sphere sphere-1"></div>
+        <div class="gradient-sphere sphere-2"></div>
+        <div class="gradient-sphere sphere-3"></div>
+        <div class="grid-overlay"></div>
     </div>
-  {{ end }}
-</div>
+    <div class="container" style="position:relative; z-index:1; padding-top:100px;">
+        <div class="hero-content-wrapper" style="grid-template-columns:1fr;">
+            <div class="hero-content" data-aos="fade-up" style="text-align:center;">
+                <div class="hero-badge" style="display:inline-flex; margin:0 auto 20px;">
+                    <span class="pulse-dot"></span> Premium Clothing • Khandwa
+                </div>
+                <h1 class="hero-title" style="font-size:clamp(32px,6vw,52px);">
+                    <span class="greeting">Welcome to</span>
+                    <span class="name-gradient">Yogi Ji Garment</span>
+                </h1>
+                <p class="hero-description" style="margin:0 auto 30px; max-width:600px; color:#cbd5e1;">
+                    Discover traditional & western wear. Book directly via WhatsApp — fast, local delivery in Khandwa.
+                </p>
+                <div class="hero-cta" style="justify-content:center;">
+                    <a href="#products" class="btn-primary">Explore Collection <i class="fas fa-arrow-down"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Products Grid -->
+<section id="products" class="projects-section" style="background: var(--bg-primary);">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">Our Collection</span>
+            <h2 class="section-title gradient-text">Latest Products</h2>
+            <div class="title-underline"></div>
+        </div>
+        <div class="projects-showcase-grid">
+            {{ $products := where .Site.RegularPages "Section" "all-products" }}
+            {{ range $products }}
+            <div class="project-showcase-item" data-aos="fade-up">
+                <div class="project-image-container">
+                    {{ if .Params.image }}
+                    <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+                    {{ else }}
+                    <div style="width:100%; height:100%; background:#131a30; display:flex; align-items:center; justify-content:center; color:#FFD700;">No Image</div>
+                    {{ end }}
+                </div>
+                <div class="project-details">
+                    <span class="project-tag">New Arrival</span>
+                    <h3>{{ .Title }}</h3>
+                    <p>₹{{ .Params.price }}</p>
+                    <div class="project-action-links">
+                        <a href="{{ .Permalink }}" class="btn-small">View & Book <i class="fas fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+            {{ if eq (len $products) 0 }}
+            <div style="grid-column:1/-1; text-align:center; color:#94a3b8; padding:60px 20px;">
+                <i class="fas fa-box-open" style="font-size:48px; margin-bottom:20px; color:#FFD700;"></i>
+                <p>No products yet. Shopkeeper will add soon!</p>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section" style="background: var(--bg-secondary);">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">Get In Touch</span>
+            <h2 class="section-title gradient-text">Visit Us or Book on WhatsApp</h2>
+            <div class="title-underline"></div>
+        </div>
+        <div class="contact-simple-layout" data-aos="fade-up">
+            <div class="contact-info-centered glass-card" style="padding:40px 20px;">
+                <h3 style="color:#fff; margin-bottom:20px;">Yogi Ji Garment</h3>
+                <p class="contact-intro" style="color:#cbd5e1; max-width:500px; margin:0 auto 30px;">
+                    📍 Shop Address: [Address], Khandwa<br>
+                    📞 Phone/WhatsApp: <a href="https://wa.me/919XXXXXXXXX" target="_blank" style="color:#FFD700;">+91 9XXXXXXXXX</a>
+                </p>
+                <div class="resume-actions">
+                    <a href="https://wa.me/919XXXXXXXXX?text=Hi%20Yogi%20Ji%20Garment%2C%20I%20want%20to%20book%20an%20order" class="btn-primary" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {{ end }}
