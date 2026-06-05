@@ -1,13 +1,13 @@
 {{ define "main" }}
-
-{{ partial "jumbotron" (dict "imageUrl" .Params.image "title" .Title "subtitle" .Params.subtitle) }}
-
-{{ partial "short-text" .Params.blurb}}
-
-{{ partial "2-up" .Params }}
-
-{{ partial "text-and-image" (dict "heading" .Params.values.heading "text" .Params.values.text "buttonText" "Read more" "buttonLink" "/values") }}
-
-{{ partial "blog" . }}
-
+<h1 style="color:#FFD700;">Welcome to Yogi Ji Garment</h1>
+<div class="product-grid" style="display:flex; flex-wrap:wrap; gap:20px;">
+  {{ range where .Site.RegularPages "Section" "all-products" }}
+    <div style="background:#1a1a1a; padding:15px; border-radius:10px; width:280px;">
+      <img src="{{ .Params.image }}" alt="{{ .Title }}" style="width:100%; border-radius:5px;">
+      <h3 style="color:#FFD700;">{{ .Title }}</h3>
+      <p>₹{{ .Params.price }}</p>
+      <a href="{{ .Permalink }}" style="background:#FFD700; color:black; padding:10px; text-decoration:none;">View & Book</a>
+    </div>
+  {{ end }}
+</div>
 {{ end }}
