@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="container" style="padding:20px;">
+  <h1 style="color:#FFD700;">{{ .Title }}</h1>
+  {{ if .Params.image }}
+  <img src="{{ .Params.image }}" alt="{{ .Title }}" style="max-width:100%; border-radius:10px;">
+  {{ end }}
+  <h2>₹{{ .Params.price }}</h2>
+  <div>{{ .Content }}</div>
+  <a href="https://wa.me/91XXXXXXXXXX?text=I want to book: {{ .Title }} - ₹{{ .Params.price }}" 
+     target="_blank" 
+     style="display:inline-block; background:#25D366; color:white; padding:15px 30px; text-decoration:none; border-radius:5px; font-size:20px; margin-top:20px;">
+    📞 WhatsApp par Book Karein
+  </a>
+</div>
+{{ end }}
