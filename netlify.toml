@@ -1,20 +1,15 @@
+[build]
+  base = "site"
+  command = "hugo"
+  publish = "public"
+
 [build.environment]
   NETLIFY_USE_YARN = "true"
   YARN_VERSION = "1.22.17"
 
-[build]
-  command = "yarn build"
-  publish = "dist"
-
-[context.deploy-preview]
-  command = "yarn build:preview"
-
 [dev]
   framework = "hugo"
-  targetPort = 3000
+  targetPort = 1313
 
-[[plugins]]
-  package = "netlify-plugin-cypress"
-
-  [plugins.inputs]
-    record = true
+# Agar Cypress plugin chahiye to rakh sakte ho, nahi to hata do.
+# Par build ke liye zaroori nahi.
