@@ -1,6 +1,6 @@
 {{ define "main" }}
 <!-- Hero Section -->
-<section class="hero-fullscreen" style="position:relative; min-height:100vh; display:flex; align-items:center; background:var(--bg-primary); overflow:hidden;">
+<section class="hero-fullscreen">
     <div class="hero-bg-animate">
         <div class="gradient-sphere sphere-1"></div>
         <div class="gradient-sphere sphere-2"></div>
@@ -15,7 +15,7 @@
             <p class="hero-desc">Explore the finest collection for men, women & kids. Book directly via WhatsApp & get doorstep delivery.</p>
             <div class="hero-btns">
                 <a href="#collection" class="btn-gold">Explore Collection <i class="fas fa-arrow-down"></i></a>
-                <a href="https://wa.me/919XXXXXXXXX?text=Hi%20Yogi%20Ji%20Garment%2C%20I%20want%20to%20order" class="btn-outline-gold" target="_blank">
+                <a href="https://wa.me/918641067603?text=Hi%20Yogi%20Ji%20Garment%2C%20I%20want%20to%20order" class="btn-outline-gold" target="_blank">
                     <i class="fab fa-whatsapp"></i> WhatsApp Order
                 </a>
             </div>
@@ -23,7 +23,7 @@
     </div>
 </section>
 
-<!-- Trust Bar -->
+<!-- Trust Bar (Without Fast Local Delivery) -->
 <section class="trust-bar" style="background:var(--bg-secondary); border-top:1px solid var(--glass-border); border-bottom:1px solid var(--glass-border);">
     <div class="container" style="display:flex; justify-content:center; gap:60px; flex-wrap:wrap; padding:30px 0; text-align:center;">
         <div class="trust-item" data-aos="fade-up">
@@ -41,11 +41,6 @@
             <h3>Premium</h3>
             <p>Quality Guaranteed</p>
         </div>
-        <div class="trust-item" data-aos="fade-up" data-aos-delay="300">
-            <i class="fas fa-truck" style="color:#FFD700; font-size:28px;"></i>
-            <h3>Fast</h3>
-            <p>Local Delivery</p>
-        </div>
     </div>
 </section>
 
@@ -58,17 +53,17 @@
             <div class="title-underline"></div>
         </div>
         <div class="categories-grid" data-aos="fade-up">
-            <a href="https://wa.me/919XXXXXXXXX?text=Show%20me%20Men's%20Collection" class="category-card" target="_blank">
+            <a href="https://wa.me/918641067603?text=Show%20me%20Men's%20Collection" class="category-card" target="_blank">
                 <div class="category-icon"><i class="fas fa-male"></i></div>
                 <h3>Men's Wear</h3>
                 <p>Kurtas, Shirts & more</p>
             </a>
-            <a href="https://wa.me/919XXXXXXXXX?text=Show%20me%20Women's%20Collection" class="category-card" target="_blank">
+            <a href="https://wa.me/918641067603?text=Show%20me%20Women's%20Collection" class="category-card" target="_blank">
                 <div class="category-icon"><i class="fas fa-female"></i></div>
                 <h3>Women's Wear</h3>
                 <p>Sarees, Suits & more</p>
             </a>
-            <a href="https://wa.me/919XXXXXXXXX?text=Show%20me%20Kids'%20Collection" class="category-card" target="_blank">
+            <a href="https://wa.me/918641067603?text=Show%20me%20Kids'%20Collection" class="category-card" target="_blank">
                 <div class="category-icon"><i class="fas fa-child"></i></div>
                 <h3>Kids' Wear</h3>
                 <p>Frocks, Kurta Sets</p>
@@ -77,7 +72,7 @@
     </div>
 </section>
 
-<!-- Featured Products -->
+<!-- Featured Products – Meesho Style Grid -->
 <section id="collection" style="padding:80px 0; background:var(--bg-secondary);">
     <div class="container">
         <div class="section-header" data-aos="fade-up">
@@ -87,21 +82,27 @@
         </div>
         <div class="products-grid">
             {{ $products := where .Site.RegularPages "Section" "all-products" }}
-            {{ range first 8 $products }}
+            {{ range first 12 $products }}
             <div class="product-card" data-aos="fade-up">
+                <div class="product-badge">New</div>
                 <div class="product-img-wrap">
                     {{ if .Params.image }}
                     <img src="{{ .Params.image }}" alt="{{ .Title }}">
                     {{ else }}
                     <div class="no-img"><i class="fas fa-tshirt"></i></div>
                     {{ end }}
-                    <div class="product-actions">
-                        <a href="{{ .Permalink }}" class="btn-view">View & Book</a>
+                    <div class="product-overlay">
+                        <a href="{{ .Permalink }}" class="btn-view">Quick View</a>
                     </div>
                 </div>
                 <div class="product-info">
                     <h3>{{ .Title }}</h3>
-                    <span class="price">₹{{ .Params.price }}</span>
+                    <div class="price-row">
+                        <span class="price">₹{{ .Params.price }}</span>
+                        <a href="https://wa.me/91 8641067603?text=I%20want%20to%20book:%20{{ .Title }}%20-%20%E2%82%B9{{ .Params.price }}" class="btn-book-now" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Book Now
+                        </a>
+                    </div>
                 </div>
             </div>
             {{ end }}
@@ -113,7 +114,7 @@
             {{ end }}
         </div>
         <div style="text-align:center; margin-top:40px;">
-            <a href="https://wa.me/919XXXXXXXXX?text=Show%20me%20your%20full%20collection" class="btn-gold" target="_blank">
+            <a href="https://wa.me/918641067603?text=Show%20me%20your%20full%20collection" class="btn-gold" target="_blank">
                 <i class="fab fa-whatsapp"></i> View Full Catalog on WhatsApp
             </a>
         </div>
@@ -154,7 +155,7 @@
         <span style="font-size:14px; letter-spacing:3px; text-transform:uppercase; color:#000;">Limited Time Offer</span>
         <h2 style="color:#000; font-size:clamp(28px,5vw,40px); margin:12px 0;">🎉 Flat 10% Off on First Order</h2>
         <p style="color:#000; max-width:600px; margin:0 auto 20px;">Use code <strong style="background:#000; color:#FFD700; padding:2px 8px; border-radius:4px;">YOGI10</strong> when you book via WhatsApp</p>
-        <a href="https://wa.me/919XXXXXXXXX?text=I%20want%20to%20avail%20the%2010%25%20discount" class="btn-gold" style="background:#000; color:#FFD700;" target="_blank">
+        <a href="https://wa.me/918641067603?text=I%20want%20to%20avail%20the%2010%25%20discount" class="btn-gold" style="background:#000; color:#FFD700;" target="_blank">
             Claim Offer on WhatsApp
         </a>
     </div>
@@ -193,8 +194,8 @@
     <div class="container" data-aos="fade-up">
         <i class="fab fa-instagram" style="font-size:48px; color:#FFD700;"></i>
         <h3 style="margin-top:20px; color:#fff;">Follow us on Instagram</h3>
-        <p style="color:#cbd5e1;">@yogijigarment • 32k followers</p>
-        <a href="https://instagram.com/yogijigarment" class="btn-outline-gold" target="_blank" style="margin-top:16px;">
+        <p style="color:#cbd5e1;">@yogi_ji_garment • 32k followers</p>
+        <a href="https://www.instagram.com/yogi_ji_garment" class="btn-outline-gold" target="_blank" style="margin-top:16px;">
             <i class="fab fa-instagram"></i> Visit Profile
         </a>
     </div>
@@ -220,8 +221,8 @@
             <div class="glass-card" style="padding:30px; text-align:center;">
                 <i class="fab fa-whatsapp" style="font-size:32px; color:#25D366;"></i>
                 <h4 style="margin:16px 0 8px; color:#fff;">Book via WhatsApp</h4>
-                <p style="color:#cbd5e1;">+91 9XXXXXXXXX</p>
-                <a href="https://wa.me/919XXXXXXXXX?text=Hi%2C%20I%20want%20to%20place%20an%20order" target="_blank" class="btn-gold" style="margin-top:12px; background:#25D366; background:linear-gradient(135deg,#25D366,#128C7E);">
+                <p style="color:#cbd5e1;">+91 8641067603</p>
+                <a href="https://wa.me/918641067603?text=Hi%2C%20I%20want%20to%20place%20an%20order" target="_blank" class="btn-gold" style="margin-top:12px; background:linear-gradient(135deg,#25D366,#128C7E);">
                     <i class="fab fa-whatsapp"></i> Start Chat
                 </a>
             </div>
