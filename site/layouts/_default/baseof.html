@@ -26,7 +26,7 @@
     {{ end }}
 </head>
 <body>
-    <!-- Navbar – Sticky, hides on scroll down, shows on scroll up -->
+    <!-- Navbar -->
     <header class="header" id="header">
         <nav class="navbar" id="navbar">
             <div class="container nav-container">
@@ -54,11 +54,6 @@
         {{ block "main" . }}{{ end }}
     </main>
 
-    <!-- Floating WhatsApp Button – no number visible -->
-    <a href="https://wa.me/918641067603?text=Hi%2C%20I%20want%20to%20order" class="floating-whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom-centered">
@@ -74,7 +69,6 @@
     <script>
         AOS.init({duration:1000,once:true,offset:80});
 
-        // Navbar hide/show on scroll
         const navbar = document.getElementById('navbar');
         let lastScroll = 0;
         window.addEventListener('scroll', () => {
@@ -84,18 +78,15 @@
                 return;
             }
             if (currentScroll > lastScroll && !navbar.classList.contains('scroll-down')) {
-                // scroll down
                 navbar.classList.remove('scroll-up');
                 navbar.classList.add('scroll-down');
             } else if (currentScroll < lastScroll && navbar.classList.contains('scroll-down')) {
-                // scroll up
                 navbar.classList.remove('scroll-down');
                 navbar.classList.add('scroll-up');
             }
             lastScroll = currentScroll;
         });
 
-        // Hamburger menu toggle
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
         hamburger.addEventListener('click', () => {
@@ -104,7 +95,6 @@
             document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
 
-        // Close menu on link click
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
@@ -113,7 +103,6 @@
             });
         });
 
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -127,7 +116,6 @@
             });
         });
 
-        // Back to top button
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 400) {
