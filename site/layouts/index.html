@@ -1,92 +1,229 @@
 {{ define "main" }}
 <!-- Hero Section -->
-<section id="home" class="hero-section" style="min-height:70vh;">
-    <div class="hero-background">
+<section class="hero-fullscreen" style="position:relative; min-height:100vh; display:flex; align-items:center; background:var(--bg-primary); overflow:hidden;">
+    <div class="hero-bg-animate">
         <div class="gradient-sphere sphere-1"></div>
         <div class="gradient-sphere sphere-2"></div>
         <div class="gradient-sphere sphere-3"></div>
         <div class="grid-overlay"></div>
     </div>
-    <div class="container" style="position:relative; z-index:1; padding-top:100px;">
-        <div class="hero-content-wrapper" style="grid-template-columns:1fr;">
-            <div class="hero-content" data-aos="fade-up" style="text-align:center;">
-                <div class="hero-badge" style="display:inline-flex; margin:0 auto 20px;">
-                    <span class="pulse-dot"></span> Premium Clothing • Khandwa
-                </div>
-                <h1 class="hero-title" style="font-size:clamp(32px,6vw,52px);">
-                    <span class="greeting">Welcome to</span>
-                    <span class="name-gradient">Yogi Ji Garment</span>
-                </h1>
-                <p class="hero-description" style="margin:0 auto 30px; max-width:600px; color:#cbd5e1;">
-                    Discover traditional & western wear. Book directly via WhatsApp — fast, local delivery in Khandwa.
-                </p>
-                <div class="hero-cta" style="justify-content:center;">
-                    <a href="#products" class="btn-primary">Explore Collection <i class="fas fa-arrow-down"></i></a>
-                </div>
+    <div class="container" style="position:relative; z-index:2; padding-top:100px; text-align:center;">
+        <div data-aos="fade-up">
+            <span class="hero-tag">✦ Premium Clothing Store ✦</span>
+            <h1 class="hero-heading">Yogi Ji Garment</h1>
+            <p class="hero-subtitle">Traditional & Western Wear • Khandwa</p>
+            <p class="hero-desc">Explore the finest collection for men, women & kids. Book directly via WhatsApp & get doorstep delivery.</p>
+            <div class="hero-btns">
+                <a href="#collection" class="btn-gold">Explore Collection <i class="fas fa-arrow-down"></i></a>
+                <a href="https://wa.me/919XXXXXXXXX?text=Hi%20Yogi%20Ji%20Garment%2C%20I%20want%20to%20order" class="btn-outline-gold" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Order
+                </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Products Grid -->
-<section id="products" class="projects-section" style="background: var(--bg-primary);">
+<!-- Trust Bar -->
+<section class="trust-bar" style="background:var(--bg-secondary); border-top:1px solid var(--glass-border); border-bottom:1px solid var(--glass-border);">
+    <div class="container" style="display:flex; justify-content:center; gap:60px; flex-wrap:wrap; padding:30px 0; text-align:center;">
+        <div class="trust-item" data-aos="fade-up">
+            <i class="fab fa-instagram" style="color:#FFD700; font-size:28px;"></i>
+            <h3>32k+</h3>
+            <p>Instagram Followers</p>
+        </div>
+        <div class="trust-item" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-camera" style="color:#FFD700; font-size:28px;"></i>
+            <h3>1200+</h3>
+            <p>Product Posts</p>
+        </div>
+        <div class="trust-item" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-star" style="color:#FFD700; font-size:28px;"></i>
+            <h3>Premium</h3>
+            <p>Quality Guaranteed</p>
+        </div>
+        <div class="trust-item" data-aos="fade-up" data-aos-delay="300">
+            <i class="fas fa-truck" style="color:#FFD700; font-size:28px;"></i>
+            <h3>Fast</h3>
+            <p>Local Delivery</p>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section id="categories" style="padding:80px 0; background:var(--bg-primary);">
     <div class="container">
         <div class="section-header" data-aos="fade-up">
-            <span class="section-subtitle">Our Collection</span>
-            <h2 class="section-title gradient-text">Latest Products</h2>
+            <span class="section-tag">Shop by Category</span>
+            <h2 class="section-title gradient-text">What are you looking for?</h2>
             <div class="title-underline"></div>
         </div>
-        <div class="projects-showcase-grid">
+        <div class="categories-grid" data-aos="fade-up">
+            <a href="https://wa.me/919XXXXXXXXX?text=Show%20me%20Men's%20Collection" class="category-card" target="_blank">
+                <div class="category-icon"><i class="fas fa-male"></i></div>
+                <h3>Men's Wear</h3>
+                <p>Kurtas, Shirts & more</p>
+            </a>
+            <a href="https://wa.me/919XXXXXXXXX?text=Show%20me%20Women's%20Collection" class="category-card" target="_blank">
+                <div class="category-icon"><i class="fas fa-female"></i></div>
+                <h3>Women's Wear</h3>
+                <p>Sarees, Suits & more</p>
+            </a>
+            <a href="https://wa.me/919XXXXXXXXX?text=Show%20me%20Kids'%20Collection" class="category-card" target="_blank">
+                <div class="category-icon"><i class="fas fa-child"></i></div>
+                <h3>Kids' Wear</h3>
+                <p>Frocks, Kurta Sets</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section id="collection" style="padding:80px 0; background:var(--bg-secondary);">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">New Arrivals</span>
+            <h2 class="section-title gradient-text">Featured Collection</h2>
+            <div class="title-underline"></div>
+        </div>
+        <div class="products-grid">
             {{ $products := where .Site.RegularPages "Section" "all-products" }}
-            {{ range $products }}
-            <div class="project-showcase-item" data-aos="fade-up">
-                <div class="project-image-container">
+            {{ range first 8 $products }}
+            <div class="product-card" data-aos="fade-up">
+                <div class="product-img-wrap">
                     {{ if .Params.image }}
-                    <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+                    <img src="{{ .Params.image }}" alt="{{ .Title }}">
                     {{ else }}
-                    <div style="width:100%; height:100%; background:#131a30; display:flex; align-items:center; justify-content:center; color:#FFD700;">No Image</div>
+                    <div class="no-img"><i class="fas fa-tshirt"></i></div>
                     {{ end }}
-                </div>
-                <div class="project-details">
-                    <span class="project-tag">New Arrival</span>
-                    <h3>{{ .Title }}</h3>
-                    <p>₹{{ .Params.price }}</p>
-                    <div class="project-action-links">
-                        <a href="{{ .Permalink }}" class="btn-small">View & Book <i class="fas fa-whatsapp"></i></a>
+                    <div class="product-actions">
+                        <a href="{{ .Permalink }}" class="btn-view">View & Book</a>
                     </div>
+                </div>
+                <div class="product-info">
+                    <h3>{{ .Title }}</h3>
+                    <span class="price">₹{{ .Params.price }}</span>
                 </div>
             </div>
             {{ end }}
             {{ if eq (len $products) 0 }}
-            <div style="grid-column:1/-1; text-align:center; color:#94a3b8; padding:60px 20px;">
-                <i class="fas fa-box-open" style="font-size:48px; margin-bottom:20px; color:#FFD700;"></i>
-                <p>No products yet. Shopkeeper will add soon!</p>
+            <div style="grid-column:1/-1; text-align:center; padding:60px; color:#94a3b8;">
+                <i class="fas fa-box-open" style="font-size:48px; color:#FFD700; margin-bottom:20px;"></i>
+                <p>No products yet. Exciting collection coming soon!</p>
             </div>
             {{ end }}
+        </div>
+        <div style="text-align:center; margin-top:40px;">
+            <a href="https://wa.me/919XXXXXXXXX?text=Show%20me%20your%20full%20collection" class="btn-gold" target="_blank">
+                <i class="fab fa-whatsapp"></i> View Full Catalog on WhatsApp
+            </a>
         </div>
     </div>
 </section>
 
-<!-- Contact Section -->
-<section id="contact" class="contact-section" style="background: var(--bg-secondary);">
+<!-- Why Choose Us -->
+<section style="padding:80px 0; background:var(--bg-primary);">
     <div class="container">
         <div class="section-header" data-aos="fade-up">
-            <span class="section-subtitle">Get In Touch</span>
-            <h2 class="section-title gradient-text">Visit Us or Book on WhatsApp</h2>
+            <span class="section-tag">Why Yogi Ji</span>
+            <h2 class="section-title gradient-text">The Yogi Ji Promise</h2>
             <div class="title-underline"></div>
         </div>
-        <div class="contact-simple-layout" data-aos="fade-up">
-            <div class="contact-info-centered glass-card" style="padding:40px 20px;">
-                <h3 style="color:#fff; margin-bottom:20px;">Yogi Ji Garment</h3>
-                <p class="contact-intro" style="color:#cbd5e1; max-width:500px; margin:0 auto 30px;">
-                    📍 Shop Address: [Address], Khandwa<br>
-                    📞 Phone/WhatsApp: <a href="https://wa.me/919XXXXXXXXX" target="_blank" style="color:#FFD700;">+91 9XXXXXXXXX</a>
-                </p>
-                <div class="resume-actions">
-                    <a href="https://wa.me/919XXXXXXXXX?text=Hi%20Yogi%20Ji%20Garment%2C%20I%20want%20to%20book%20an%20order" class="btn-primary" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-                    </a>
-                </div>
+        <div class="features-grid" data-aos="fade-up">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                <h4>Premium Quality</h4>
+                <p>Handpicked fabrics & flawless stitching</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <h4>Instant Booking</h4>
+                <p>Book via WhatsApp in seconds, no complex checkout</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shipping-fast"></i></div>
+                <h4>Fast Local Delivery</h4>
+                <p>Reliable delivery across Khandwa within 24-48 hrs</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Special Offer Banner -->
+<section style="background:var(--accent-gradient); padding:50px 0; text-align:center;">
+    <div class="container" data-aos="zoom-in">
+        <span style="font-size:14px; letter-spacing:3px; text-transform:uppercase; color:#000;">Limited Time Offer</span>
+        <h2 style="color:#000; font-size:clamp(28px,5vw,40px); margin:12px 0;">🎉 Flat 10% Off on First Order</h2>
+        <p style="color:#000; max-width:600px; margin:0 auto 20px;">Use code <strong style="background:#000; color:#FFD700; padding:2px 8px; border-radius:4px;">YOGI10</strong> when you book via WhatsApp</p>
+        <a href="https://wa.me/919XXXXXXXXX?text=I%20want%20to%20avail%20the%2010%25%20discount" class="btn-gold" style="background:#000; color:#FFD700;" target="_blank">
+            Claim Offer on WhatsApp
+        </a>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section style="padding:80px 0; background:var(--bg-secondary);">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Happy Customers</span>
+            <h2 class="section-title gradient-text">What People Say</h2>
+            <div class="title-underline"></div>
+        </div>
+        <div class="testimonial-grid" data-aos="fade-up">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Bahut hi acchi quality aur timely delivery. Khandwa ki best shop!"</p>
+                <span>- Ravi Sharma</span>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Saree collection lajawab hai. WhatsApp se order karna bahut easy tha."</p>
+                <span>- Priya Patel</span>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Kids wear ki variety aur price dono best. Highly recommended."</p>
+                <span>- Anjali Gupta</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Instagram Connect -->
+<section style="padding:60px 0; background:var(--bg-primary); text-align:center;">
+    <div class="container" data-aos="fade-up">
+        <i class="fab fa-instagram" style="font-size:48px; color:#FFD700;"></i>
+        <h3 style="margin-top:20px; color:#fff;">Follow us on Instagram</h3>
+        <p style="color:#cbd5e1;">@yogijigarment • 32k followers</p>
+        <a href="https://instagram.com/yogijigarment" class="btn-outline-gold" target="_blank" style="margin-top:16px;">
+            <i class="fab fa-instagram"></i> Visit Profile
+        </a>
+    </div>
+</section>
+
+<!-- Contact & Map -->
+<section id="contact" style="padding:80px 0; background:var(--bg-secondary);">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Visit Us</span>
+            <h2 class="section-title gradient-text">Get In Touch</h2>
+            <div class="title-underline"></div>
+        </div>
+        <div class="contact-row" data-aos="fade-up">
+            <div class="glass-card" style="padding:30px; text-align:center;">
+                <i class="fas fa-map-marker-alt" style="font-size:32px; color:#FFD700;"></i>
+                <h4 style="margin:16px 0 8px; color:#fff;">Shop Address</h4>
+                <p style="color:#cbd5e1;">Main Road, Khandwa, Madhya Pradesh</p>
+                <a href="https://maps.google.com/?q=Khandwa" target="_blank" class="btn-outline-gold" style="margin-top:12px;">
+                    <i class="fas fa-directions"></i> Open in Maps
+                </a>
+            </div>
+            <div class="glass-card" style="padding:30px; text-align:center;">
+                <i class="fab fa-whatsapp" style="font-size:32px; color:#25D366;"></i>
+                <h4 style="margin:16px 0 8px; color:#fff;">Book via WhatsApp</h4>
+                <p style="color:#cbd5e1;">+91 9XXXXXXXXX</p>
+                <a href="https://wa.me/919XXXXXXXXX?text=Hi%2C%20I%20want%20to%20place%20an%20order" target="_blank" class="btn-gold" style="margin-top:12px; background:#25D366; background:linear-gradient(135deg,#25D366,#128C7E);">
+                    <i class="fab fa-whatsapp"></i> Start Chat
+                </a>
             </div>
         </div>
     </div>
