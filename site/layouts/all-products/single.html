@@ -3,7 +3,7 @@
     <div class="container">
         <div class="glass-card" style="max-width:700px; margin:0 auto; padding:30px; text-align:center;" data-aos="fade-up">
             {{ if .Params.image }}
-            <img src="{{ .Params.image }}" alt="{{ .Title }}" style="max-width:100%; border-radius:20px; border:2px solid rgba(255,215,0,0.3);">
+            <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" style="max-width:100%; border-radius:20px; border:2px solid rgba(255,215,0,0.3);">
             {{ end }}
             <h1 style="color:#FFD700; margin:24px 0 8px; font-size:32px;">{{ .Title }}</h1>
             <div style="font-size:28px; font-weight:700; color:#fff; margin-bottom:16px;">₹{{ .Params.price }}</div>
