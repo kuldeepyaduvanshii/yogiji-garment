@@ -1,13 +1,13 @@
 {{ define "main" }}
-<!-- Hero Section -->
-<section class="hero-fullscreen">
+<!-- Hero Section – thoda upar shift kiya -->
+<section class="hero-fullscreen" style="padding-top: 80px;">
     <div class="hero-bg-animate">
         <div class="gradient-sphere sphere-1"></div>
         <div class="gradient-sphere sphere-2"></div>
         <div class="gradient-sphere sphere-3"></div>
         <div class="grid-overlay"></div>
     </div>
-    <div class="container" style="position:relative; z-index:2; padding-top:100px; text-align:center;">
+    <div class="container" style="position:relative; z-index:2; text-align:center;">
         <div data-aos="fade-up">
             <span class="hero-tag">✦ Premium Clothing Store ✦</span>
             <h1 class="hero-heading">Yogi Ji Garment</h1>
@@ -15,15 +15,15 @@
             <p class="hero-desc">Explore the finest collection for men, women & kids. Book directly via WhatsApp & get doorstep delivery.</p>
             <div class="hero-btns">
                 <a href="#collection" class="btn-gold">Explore Collection <i class="fas fa-arrow-down"></i></a>
-                <a href="https://wa.me/918641067603?text=Hi%20Yogi%20Ji%20Garment%2C%20I%20want%20to%20order" class="btn-outline-gold" target="_blank">
-                    <i class="fab fa-whatsapp"></i> WhatsApp Order
+                <a href="https://maps.app.goo.gl/VFqBaCaANekUbnfG6" class="btn-outline-gold" target="_blank">
+                    <i class="fas fa-map-marker-alt"></i> Maps
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Trust Bar (Without Fast Local Delivery) -->
+<!-- Trust Bar (Fast Local Delivery hata diya) -->
 <section class="trust-bar" style="background:var(--bg-secondary); border-top:1px solid var(--glass-border); border-bottom:1px solid var(--glass-border);">
     <div class="container" style="display:flex; justify-content:center; gap:60px; flex-wrap:wrap; padding:30px 0; text-align:center;">
         <div class="trust-item" data-aos="fade-up">
@@ -40,34 +40,6 @@
             <i class="fas fa-star" style="color:#FFD700; font-size:28px;"></i>
             <h3>Premium</h3>
             <p>Quality Guaranteed</p>
-        </div>
-    </div>
-</section>
-
-<!-- Categories Section -->
-<section id="categories" style="padding:80px 0; background:var(--bg-primary);">
-    <div class="container">
-        <div class="section-header" data-aos="fade-up">
-            <span class="section-tag">Shop by Category</span>
-            <h2 class="section-title gradient-text">What are you looking for?</h2>
-            <div class="title-underline"></div>
-        </div>
-        <div class="categories-grid" data-aos="fade-up">
-            <a href="https://wa.me/918641067603?text=Show%20me%20Men's%20Collection" class="category-card" target="_blank">
-                <div class="category-icon"><i class="fas fa-male"></i></div>
-                <h3>Men's Wear</h3>
-                <p>Kurtas, Shirts & more</p>
-            </a>
-            <a href="https://wa.me/918641067603?text=Show%20me%20Women's%20Collection" class="category-card" target="_blank">
-                <div class="category-icon"><i class="fas fa-female"></i></div>
-                <h3>Women's Wear</h3>
-                <p>Sarees, Suits & more</p>
-            </a>
-            <a href="https://wa.me/918641067603?text=Show%20me%20Kids'%20Collection" class="category-card" target="_blank">
-                <div class="category-icon"><i class="fas fa-child"></i></div>
-                <h3>Kids' Wear</h3>
-                <p>Frocks, Kurta Sets</p>
-            </a>
         </div>
     </div>
 </section>
@@ -99,7 +71,7 @@
                     <h3>{{ .Title }}</h3>
                     <div class="price-row">
                         <span class="price">₹{{ .Params.price }}</span>
-                        <a href="https://wa.me/91 8641067603?text=I%20want%20to%20book:%20{{ .Title }}%20-%20%E2%82%B9{{ .Params.price }}" class="btn-book-now" target="_blank">
+                        <a href="https://wa.me/918641067603?text=I%20want%20to%20book:%20{{ .Title }}%20-%20%E2%82%B9{{ .Params.price }}" class="btn-book-now" target="_blank">
                             <i class="fab fa-whatsapp"></i> Book Now
                         </a>
                     </div>
@@ -201,7 +173,7 @@
     </div>
 </section>
 
-<!-- Contact & Map -->
+<!-- Contact Section – no phone number, only WhatsApp button -->
 <section id="contact" style="padding:80px 0; background:var(--bg-secondary);">
     <div class="container">
         <div class="section-header" data-aos="fade-up">
@@ -214,14 +186,13 @@
                 <i class="fas fa-map-marker-alt" style="font-size:32px; color:#FFD700;"></i>
                 <h4 style="margin:16px 0 8px; color:#fff;">Shop Address</h4>
                 <p style="color:#cbd5e1;">Main Road, Khandwa, Madhya Pradesh</p>
-                <a href="https://maps.google.com/?q=Khandwa" target="_blank" class="btn-outline-gold" style="margin-top:12px;">
+                <a href="https://maps.app.goo.gl/VFqBaCaANekUbnfG6" target="_blank" class="btn-outline-gold" style="margin-top:12px;">
                     <i class="fas fa-directions"></i> Open in Maps
                 </a>
             </div>
             <div class="glass-card" style="padding:30px; text-align:center;">
                 <i class="fab fa-whatsapp" style="font-size:32px; color:#25D366;"></i>
                 <h4 style="margin:16px 0 8px; color:#fff;">Book via WhatsApp</h4>
-                <p style="color:#cbd5e1;">+91 8641067603</p>
                 <a href="https://wa.me/918641067603?text=Hi%2C%20I%20want%20to%20place%20an%20order" target="_blank" class="btn-gold" style="margin-top:12px; background:linear-gradient(135deg,#25D366,#128C7E);">
                     <i class="fab fa-whatsapp"></i> Start Chat
                 </a>
