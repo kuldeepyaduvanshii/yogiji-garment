@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Title }} | Yogi Ji Garment</title>
-    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}Yogi Ji Garment - Khandwa's premium clothing shop. Shop traditional and western wear online.{{ end }}">
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}Yogi Ji Garment - Khandwa's premium clothing shop. Book via WhatsApp.{{ end }}">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#080c17">
+
+    <!-- Fonts – Momentum similar: Montserrat ExtraBold for logo, Plus Jakarta Sans for body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
@@ -16,24 +26,38 @@
     {{ end }}
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="{{ "/" | relURL }}" class="nav-logo">
-                <span class="logo-text">Yogi Ji Garment</span>
-                <span class="logo-dot"></span>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="{{ "/" | relURL }}" class="nav-link active">Home</a></li>
-                <li><a href="#products" class="nav-link">Products</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger"><span></span><span></span><span></span></div>
-        </div>
-    </nav>
+    <!-- Navbar – Modern Pill Style, Momentum bold font used for logo -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="container nav-container">
+                <div class="nav-wrapper">
+                    <a href="{{ "/" | relURL }}" class="logo">
+                        <div class="logo-text">
+                            <h1>YOGI JI GARMENT</h1>
+                            <span class="logo-subtitle">Khandwa, M.P.</span>
+                        </div>
+                    </a>
+                    <ul class="nav-menu" id="navMenu">
+                        <li class="nav-item"><a href="{{ "/" | relURL }}" class="nav-link active">Home</a></li>
+                        <li class="nav-item"><a href="#collection" class="nav-link">Products</a></li>
+                        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <div class="nav-actions">
+                        <button class="hamburger" id="hamburger"></button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <main>
         {{ block "main" . }}{{ end }}
     </main>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919XXXXXXXXX?text=Hi%2C%20I%20want%20to%20order" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <footer class="footer">
         <div class="container">
@@ -49,23 +73,17 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({duration:1000,once:true,offset:80});
-        // navbar scroll effect
         const nb=document.querySelector('.navbar');
         window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',window.pageYOffset>50));
-        // hamburger menu
-        const hb=document.querySelector('.hamburger'),nm=document.querySelector('.nav-menu');
-        if(hb&&nm)hb.addEventListener('click',()=>{hb.classList.toggle('active');nm.classList.toggle('active');document.body.style.overflow=nm.classList.contains('active')?'hidden':''});
+        const hb=document.getElementById('hamburger'),nm=document.getElementById('navMenu');
+        hb?.addEventListener('click',()=>{hb.classList.toggle('active');nm.classList.toggle('active');document.body.style.overflow=nm.classList.contains('active')?'hidden':''});
         document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{hb?.classList.remove('active');nm?.classList.remove('active');document.body.style.overflow=''}));
-        // smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const h=this.getAttribute('href');if(h==='#')return;const t=document.querySelector(h);if(t)window.scrollTo({top:t.offsetTop-80,behavior:'smooth'})}));
-        // scroll sections active link
         const ss=document.querySelectorAll('section[id]'),nl=document.querySelectorAll('.nav-link');
         window.addEventListener('scroll',()=>{const sy=window.pageYOffset;ss.forEach(s=>{const sh=s.offsetHeight,st=s.offsetTop-100,sid=s.getAttribute('id');if(sy>st&&sy<=st+sh)nl.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')===`#${sid}`)l.classList.add('active')})})});
-        // back to top
         const bt=document.getElementById('backToTop');
         window.addEventListener('scroll',()=>bt?.classList.toggle('show',window.pageYOffset>400));
         bt?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-        document.querySelectorAll('a[href="#"]').forEach(l=>l.addEventListener('click',e=>e.preventDefault()));
     </script>
 </body>
 </html>
